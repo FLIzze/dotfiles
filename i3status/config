@@ -1,0 +1,59 @@
+general {
+	output_format = "i3bar"
+        colors = false
+        interval = 5
+        markup = "pango"
+}
+
+order += "volume master"
+order += "wireless _first_"
+order += "battery 0"
+order += "battery 1"
+order += "tztime localdate"
+order += "tztime localtime"
+
+volume master {
+        format = " <span color='#333333' size='large'> %volume</span> "
+        format_muted = " <span color='#cc0000' size='large'> %volume (Muted)</span> "
+        device = "default"
+        mixer = "Master"
+        mixer_idx = 0
+}
+
+wireless _first_ {
+        format_up = " <span color='#0066cc' size='large'>  %essid</span> "
+        format_down = " <span color='#cc0000' size='large'>  Offline</span> "
+}
+
+battery 0 {
+        format = " <span color='#2e7d32' size='large'>%status %percentage %emptytime</span> "
+        format_down = " No battery "
+        status_chr = "⚡"
+        status_bat = ""
+        status_unk = "? UNK"
+        status_full = "󰂄 FULL"
+        path = "/sys/class/power_supply/BAT%d/uevent"
+        low_threshold = 20
+        last_full_capacity = true
+}
+
+battery 1 {
+        format = " <span color='#2e7d32' size='large'>%status %percentage %emptytime</span> "
+        format_down = " No battery "
+        status_chr = "⚡"
+        status_bat = ""
+        status_unk = "? UNK"
+        status_full = "󰂄 FULL"
+        path = "/sys/class/power_supply/BAT%d/uevent"
+        low_threshold = 20
+        last_full_capacity = true
+}
+
+tztime localdate {
+        format = " <span color='#7b1fa2' size='large'>  %a %d-%m-%Y</span> "
+}
+
+tztime localtime {
+        format = " <span color='#0277bd' size='large'>  %I:%M %p</span> "
+}
+
