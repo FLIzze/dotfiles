@@ -3,7 +3,7 @@ gp() {
 }
 
 stty -ixon
-bind -x '"\C-g": $HOME/Documents/confs/tmux-sessionizer'
+bind -x '"\C-g": $HOME/Documents/dotfiles/.tmux-sessionizer'
 
 alias d="docker"
 alias nv="nvim"
