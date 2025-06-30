@@ -11,13 +11,13 @@ set wildignore+=**/node_modules/**,**/.git/**
 set noswapfile
 set number relativenumber
 set shiftwidth=8 tabstop=8 expandtab softtabstop=8 smarttab
-set clipboard=unnamedplus
 set ignorecase smartcase wildignorecase
 set nowrapscan
 set smartindent
 set scrolloff=8
 set signcolumn=number
 set autoread
+set hlsearch incsearch
 
 " Snippets
 
@@ -29,9 +29,10 @@ nnoremap ,html :execute '-1read' .  templates . '/html'<CR>4jf>a
 nnoremap <leader>e :Explore<CR>
 nnoremap <leader>s :so %<CR>
 nnoremap <C-y> :noh<CR>
+vnoremap <leader>y "+y
 nnoremap <leader>y "+y
+vnoremap <leader>p "+p
 nnoremap <leader>p "+p
-nnoremap <leader>c :set autochdir<CR>
 nnoremap <leader>bn :bn<CR>
 nnoremap <leader>bp :bp<CR>
 
@@ -73,6 +74,7 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
 	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+
 " Plugins
 
 call plug#begin()
@@ -80,10 +82,6 @@ call plug#begin()
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-Plug 'evanleck/vim-svelte'
-Plug 'leafgarland/typescript-vim'
-Plug 'HerringtonDarkholme/yats.vim'
-Plug 'pangloss/vim-javascript'
+Plug 'sheerun/vim-polyglot'
 
 call plug#end()
