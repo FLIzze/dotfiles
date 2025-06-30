@@ -6,11 +6,8 @@ stty -ixon
 bind -x '"\C-g": $HOME/Documents/dotfiles/.tmux-sessionizer'
 
 alias d="docker"
-alias nv="nvim"
-
 alias ia="ssh bob@192.178.10.2"
-alias dex="$HOME/Documents/confs/tmux_dex"
-alias kctl="minikube kubectl --"
+alias ..="cd .."
 
 fuzzyopen() {
     local selected=$(fd . "$HOME" \
