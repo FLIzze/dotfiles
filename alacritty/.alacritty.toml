@@ -1,0 +1,11 @@
+[window]
+title = "Alacritty"
+startup_mode = "Maximized"
+
+[font]
+size = 13.0
+
+[general]
+import = [
+	"~/.config/alacritty/themes/themes/enfocado_light.toml"
+]
