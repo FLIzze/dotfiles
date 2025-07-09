@@ -7,5 +7,5 @@ size = 13.0
 
 [general]
 import = [
-	"~/.config/alacritty/themes/themes/enfocado_light.toml"
+	"~/Documents/dotfiles/alacritty/enfocado_light.toml"
 ]

@@ -1,6 +1,6 @@
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
-alias push=". ~/Documents/dotfiles/tmux/.push.sh"
+alias push=". $HOME/Documents/dotfiles/tmux/.push.sh"
 alias vim="nvim"
 
 gp() { 

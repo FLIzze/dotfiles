@@ -1,45 +1,35 @@
 #!/bin/bash
 
-set -euo pipefail
+DOTFILES="$HOME/Documents/dotfiles"
 
-DOTFILES="$HOME/dotfiles"
+link() {
+	local src=$1
+	local dest=$2
 
-backup_and_link() {
-  local src=$1
-  local dest=$2
+	if [ -e "$dest" ] || [ -L "$dest" ]; then
+		echo "Removing existing file or symlink: $dest"
+		rm -rf "$dest"
+	fi
 
-  if [ -L "$dest" ]; then
-    echo "Removing existing symlink: $dest"
-    rm "$dest"
-  elif [ -e "$dest" ]; then
-    echo "Backing up existing file: $dest -> ${dest}.backup"
-    mv "$dest" "${dest}.backup"
-  fi
-
-  ln -s "$src" "$dest"
-  echo "Linked $src -> $dest"
+	ln -s "$src" "$dest"
+	echo "Linked $src -> $dest"
 }
 
-echo "Creating config directories..."
-mkdir -p ~/.config/alacritty 2>/dev/null
-mkdir -p ~/.config/i3 2>/dev/null
-mkdir -p ~/.config/i3status 2>/dev/null
-mkdir -p ~/.config/nvim 2>/dev/null
+echo "Creating config directories if they don't exist..."
+mkdir -p ~/.config/i3 ~/.config/i3status ~/.config/nvim
 
-echo "Symlinking configs..."
+echo "Creating symlinks..."
 
-backup_and_link "$DOTFILES/alacritty/enfocado_light.toml" ~/.config/alacritty/alacritty.yml
-backup_and_link "$DOTFILES/i3/config" ~/.config/i3/config
-backup_and_link "$DOTFILES/i3/i3status/config" ~/.config/i3status/config
-backup_and_link "$DOTFILES/nvim" ~/.config/nvim
-backup_and_link "$DOTFILES/tmux/.tmux.conf" ~/.tmux.conf
-backup_and_link "$DOTFILES/tmux/.push.sh" ~/.push.sh
-backup_and_link "$DOTFILES/tmux/.tmux-sessionizer" ~/.tmux-sessionizer
-backup_and_link "$DOTFILES/i3/.xinitrc" ~/.xinitrc
-backup_and_link "$DOTFILES/.bashrc" ~/.bashrc
-backup_and_link "$DOTFILES/.bash_aliases" ~/.bash_aliases
+link "$DOTFILES/alacritty/.alacritty.toml" ~/.alacritty.toml
+link "$DOTFILES/i3/config" ~/.config/i3/config
+link "$DOTFILES/i3/i3status/config" ~/.config/i3status/config
+link "$DOTFILES/nvim" ~/.config/nvim
+link "$DOTFILES/tmux/.tmux.conf" ~/.tmux.conf
+link "$DOTFILES/.xinitrc" ~/.xinitrc
+link "$DOTFILES/.bashrc" ~/.bashrc
+link "$DOTFILES/.bash_aliases" ~/.bash_aliases
 
 echo "Copying hosts file to /etc/hosts (requires sudo)..."
 sudo cp "$DOTFILES/hosts" /etc/hosts
 
-echo "Done! Your dotfiles are set up."
+echo "All done!"
