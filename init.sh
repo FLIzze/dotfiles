@@ -23,9 +23,9 @@ echo "Creating symlinks..."
 link "$DOTFILES/alacritty/.alacritty.toml" ~/.alacritty.toml
 link "$DOTFILES/i3/config" ~/.config/i3/config
 link "$DOTFILES/i3/i3status/config" ~/.config/i3status/config
+link "$DOTFILES/i3/.xinitrc" ~/.xinitrc
 link "$DOTFILES/nvim" ~/.config/nvim
 link "$DOTFILES/tmux/.tmux.conf" ~/.tmux.conf
-link "$DOTFILES/.xinitrc" ~/.xinitrc
 link "$DOTFILES/.bashrc" ~/.bashrc
 link "$DOTFILES/.bash_aliases" ~/.bash_aliases
 
