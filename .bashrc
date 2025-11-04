@@ -61,6 +61,13 @@ function smile_prompt
         PS1="${BYELLOW}[${BLACK}\W${BYELLOW}]${BBLACK} ${git_display}${SC}${DF} ${BYELLOW}\$${DF} \[\e[0m\]"
 }
 
-# bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+export GOROOT=/usr/lib/go
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"

@@ -1,7 +1,7 @@
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias push=". $HOME/Documents/dotfiles/tmux/.push.sh"
-alias vim="nvim"
+alias tree="tree -I 'node_modules|.git'"
 
 gp() { 
     git add . && git commit -m "$1" && git push 
