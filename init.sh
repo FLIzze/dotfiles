@@ -28,6 +28,7 @@ link "$DOTFILES/nvim" ~/.config/nvim
 link "$DOTFILES/tmux/.tmux.conf" ~/.tmux.conf
 link "$DOTFILES/.bashrc" ~/.bashrc
 link "$DOTFILES/.bash_aliases" ~/.bash_aliases
+link "$DOTFILES/.vimrc" ~/.vimrc
 
 echo "Copying hosts file to /etc/hosts (requires sudo)..."
 sudo cp "$DOTFILES/hosts" /etc/hosts
