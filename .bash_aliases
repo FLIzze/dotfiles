@@ -1,7 +1,7 @@
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
-alias push=". $HOME/Documents/dotfiles/tmux/.push.sh"
 alias tree="tree -I 'node_modules|.git'"
+alias src=". ~/.bashrc"
 
 gp() { 
     git add . && git commit -m "$1" && git push 
@@ -12,6 +12,15 @@ bind -x '"\C-g": $HOME/Documents/dotfiles/tmux/.tmux-sessionizer'
 
 alias d="docker"
 alias ..="cd .."
+
+# bash
+alias sb=". ~/.bashrc"
+alias eb="vim ~/.bashrc"
+alias eba="vim ~/.bash_aliases"
+
+# tmux
+alias push=". $HOME/Documents/dotfiles/tmux/.push.sh"
+alias nabu=". $HOME/Documents/dotfiles/tmux/.nabu.sh"
 
 fuzzyopen() {
     local selected=$(fd . "$HOME" \
@@ -27,7 +36,7 @@ fuzzyopen() {
     if [[ -d "$selected" ]]; then
         cd "$selected" 
     else
-        cd "$(dirname "$selected")" && nvim "$(basename "$selected")"
+        cd "$(dirname "$selected")" && vim "$(basename "$selected")"
     fi
 }
 

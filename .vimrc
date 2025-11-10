@@ -3,6 +3,7 @@ let mapleader = " "
 syntax on
 
 set path+=**
+set wildignore+=*/node_modules/*,*/.git/*
 
 set tabstop=4
 set softtabstop=4
@@ -14,6 +15,7 @@ set hlsearch incsearch
 set autoindent smartindent
 set noswapfile
 set nowrap
+set autoread
 
 map <silent> <leader>e :Ex<CR>
 map <leader>s :so %<CR>
@@ -22,5 +24,12 @@ map <silent> <leader>t :!ctags -R --exclude=node_modules --exclude=git .<CR>
 
 map <silent> <leader>n :bn<CR>
 map <silent> <leader>b :bp<CR>
-
+map <silent> <leader>d :bd<CR>
 map <leader>c :set autochdir<CR>
+
+set undodir=~/.vim/undodir
+set undofile
+set undolevels=1000
+set undoreload=10000
+
+set laststatus=0
