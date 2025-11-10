@@ -1,8 +1,0 @@
-# Static table lookup for hostnames.
-# See hosts(5) for details.
-127.0.0.1        localhost
-::1              localhost
-
-192.168.1.25	abel desktop
-192.168.1.40	abel laptop
-192.178.10.2    bob ia

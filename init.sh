@@ -16,21 +16,21 @@ link() {
 }
 
 echo "Creating config directories if they don't exist..."
-mkdir -p ~/.config/i3 ~/.config/i3status ~/.config/nvim
+mkdir -p ~/.config/hypr/
+
+echo "Downloading dependencies..."
+
+yay -S tmux gvim hyprland hyprpaper hyprlock hypridle swaync
 
 echo "Creating symlinks..."
 
-link "$DOTFILES/alacritty/.alacritty.toml" ~/.alacritty.toml
-link "$DOTFILES/i3/config" ~/.config/i3/config
-link "$DOTFILES/i3/i3status/config" ~/.config/i3status/config
-link "$DOTFILES/i3/.xinitrc" ~/.xinitrc
-link "$DOTFILES/nvim" ~/.config/nvim
+link "$DOTFILES/hypr/hyprland.conf" ~/.config/hypr/hyprland.conf
+link "$DOTFILES/hypr/hyprlock.conf" ~/.config/hypr/hyprlock.conf
+link "$DOTFILES/hypr/hyprpaper.conf" ~/.config/hypr/hyprpaper.conf
+link "$DOTFILES/hypr/hypridle.conf" ~/.config/hypr/hypridle.conf
 link "$DOTFILES/tmux/.tmux.conf" ~/.tmux.conf
 link "$DOTFILES/.bashrc" ~/.bashrc
 link "$DOTFILES/.bash_aliases" ~/.bash_aliases
 link "$DOTFILES/.vimrc" ~/.vimrc
-
-echo "Copying hosts file to /etc/hosts (requires sudo)..."
-sudo cp "$DOTFILES/hosts" /etc/hosts
 
 echo "All done!"
