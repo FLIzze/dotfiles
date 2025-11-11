@@ -20,7 +20,7 @@ mkdir -p ~/.config/hypr/ ~/.config/rofi/
 
 echo "Downloading dependencies..."
 
-# yay -S tmux gvim hyprland hyprpaper hyprlock hypridle swaync rofi cliphist
+# yay -S tmux gvim hyprland hyprpaper hyprlock hypridle swaync rofi
 
 echo "Creating symlinks..."
 
