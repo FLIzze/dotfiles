@@ -16,11 +16,11 @@ link() {
 }
 
 echo "Creating config directories if they don't exist..."
-mkdir -p ~/.config/hypr/
+mkdir -p ~/.config/hypr/ ~/.config/rofi/
 
 echo "Downloading dependencies..."
 
-yay -S tmux gvim hyprland hyprpaper hyprlock hypridle swaync
+# yay -S tmux gvim hyprland hyprpaper hyprlock hypridle swaync rofi cliphist
 
 echo "Creating symlinks..."
 
@@ -28,6 +28,7 @@ link "$DOTFILES/hypr/hyprland.conf" ~/.config/hypr/hyprland.conf
 link "$DOTFILES/hypr/hyprlock.conf" ~/.config/hypr/hyprlock.conf
 link "$DOTFILES/hypr/hyprpaper.conf" ~/.config/hypr/hyprpaper.conf
 link "$DOTFILES/hypr/hypridle.conf" ~/.config/hypr/hypridle.conf
+link "$DOTFILES/rofi/" ~/.config/rofi
 link "$DOTFILES/tmux/.tmux.conf" ~/.tmux.conf
 link "$DOTFILES/.bashrc" ~/.bashrc
 link "$DOTFILES/.bash_aliases" ~/.bash_aliases
