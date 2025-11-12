@@ -21,12 +21,12 @@ alias eba="vim ~/.bash_aliases"
 # time
 alias t="timedatectl"
 
-# battery
-alias b="upower -e"
-
 # tmux
 alias push=". $HOME/Documents/dotfiles/tmux/.push.sh"
 alias nabu=". $HOME/Documents/dotfiles/tmux/.nabu.sh"
+
+# time and battery info
+alias i='echo "$(timedatectl | awk -F": " "/Local time/ {print \$2}")"; echo "BAT0: $(cat /sys/class/power_supply/BAT0/capacity)%"; echo "BAT1: $(cat /sys/class/power_supply/BAT1/capacity)%"'
 
 fuzzyopen() {
     local selected=$(fd . "$HOME" \
