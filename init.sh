@@ -16,7 +16,7 @@ link() {
 }
 
 echo "Creating config directories if they don't exist..."
-mkdir -p ~/.config/hypr/ ~/.config/rofi/
+mkdir -p ~/.config/hypr/ ~/.config/rofi/ ~/.config/kitty
 
 echo "Downloading dependencies..."
 
@@ -29,6 +29,7 @@ link "$DOTFILES/hypr/hyprlock.conf" ~/.config/hypr/hyprlock.conf
 link "$DOTFILES/hypr/hyprpaper.conf" ~/.config/hypr/hyprpaper.conf
 link "$DOTFILES/hypr/hypridle.conf" ~/.config/hypr/hypridle.conf
 link "$DOTFILES/rofi/" ~/.config/rofi
+link "$DOTFILES/kitty/" ~/.config/kitty
 link "$DOTFILES/tmux/.tmux.conf" ~/.tmux.conf
 link "$DOTFILES/.bashrc" ~/.bashrc
 link "$DOTFILES/.bash_aliases" ~/.bash_aliases
