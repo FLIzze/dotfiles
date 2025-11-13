@@ -18,9 +18,6 @@ alias sb=". ~/.bashrc"
 alias eb="vim ~/.bashrc"
 alias eba="vim ~/.bash_aliases"
 
-# time
-alias t="timedatectl"
-
 # tmux
 alias push=". $HOME/Documents/dotfiles/tmux/.push.sh"
 alias nabu=". $HOME/Documents/dotfiles/tmux/.nabu.sh"
