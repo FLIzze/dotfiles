@@ -1,7 +1,5 @@
 #!/bin/bash
 
-cd "$(tmux display-message -p -F "#{pane_start_path}")" || exit
-
 url=$(git remote get-url origin 2>/dev/null)
 [[ -z "$url" ]] && { echo "No remote found"; exit 1; }
 url=${url/git@github.com:/https://github.com/}

@@ -9,6 +9,7 @@ gp() {
 
 stty -ixon
 bind -x '"\C-g": $HOME/Documents/dotfiles/scripts/.tmux-sessionizer'
+bind -x '"\C-i": /home/flizze/Documents/dotfiles/scripts/.open-gihub.sh'
 
 alias d="docker"
 alias ..="cd .."
