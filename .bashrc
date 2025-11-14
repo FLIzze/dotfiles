@@ -16,8 +16,6 @@ branch() {
     git branch --show-current 2>/dev/null
 }
 
-eval "$(fzf --bash)"
-
 # Colors
 DIR_COLOR="\[\033[1;34m\]"       # bold blue
 BRANCH_COLOR="\[\033[0;33m\]"    # yellow
@@ -26,3 +24,5 @@ RESET_COLOR="\[\033[0m\]"
 
 PS1=''"${DIR_COLOR}\w${RESET_COLOR}"'$(b=$(branch); if [ -n "$b" ]; then echo " '"${BRANCH_COLOR}"'($b)'"${RESET_COLOR}"'"; fi)
 '"${PROMPT_COLOR}"'$ '"${RESET_COLOR}"
+
+eval "$(fzf --bash)"

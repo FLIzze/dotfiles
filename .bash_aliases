@@ -37,10 +37,17 @@ fuzzyopen() {
     [[ -z "$selected" ]] && return
 
     if [[ -d "$selected" ]]; then
+		clear
         cd "$selected" 
     else
         cd "$(dirname "$selected")" && vim "$(basename "$selected")"
     fi
 }
 
-bind -x '"\C-f": fuzzyopen'
+# Add this to .bashrc
+_fuzzyopen_keybind() {
+    fuzzyopen
+}
+
+# Bind Ctrl+F to run the function
+bind '"\C-f": "\C-a\C-k\C-u_fuzzyopen_keybind\n"'
