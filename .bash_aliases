@@ -37,7 +37,6 @@ fuzzyopen() {
     [[ -z "$selected" ]] && return
 
     if [[ -d "$selected" ]]; then
-		clear
         cd "$selected" 
     else
         cd "$(dirname "$selected")" && vim "$(basename "$selected")"
