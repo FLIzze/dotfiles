@@ -8,7 +8,7 @@ gp() {
 }
 
 stty -ixon
-bind -x '"\C-g": $HOME/Documents/dotfiles/tmux/.tmux-sessionizer'
+bind -x '"\C-g": $HOME/Documents/dotfiles/scripts/.tmux-sessionizer'
 
 alias d="docker"
 alias ..="cd .."
@@ -19,8 +19,8 @@ alias eb="vim ~/.bashrc"
 alias eba="vim ~/.bash_aliases"
 
 # tmux
-alias push=". $HOME/Documents/dotfiles/tmux/.push.sh"
-alias nabu=". $HOME/Documents/dotfiles/tmux/.nabu.sh"
+alias push=". $HOME/Documents/dotfiles/scripts/.push.sh"
+alias nabu=". $HOME/Documents/dotfiles/scripts/.nabu.sh"
 
 # time and battery info
 alias i='echo "$(timedatectl | awk -F": " "/Local time/ {print \$2}")"; echo "BAT0: $(cat /sys/class/power_supply/BAT0/capacity 2>/dev/null)%"; echo "BAT1: $(cat /sys/class/power_supply/BAT1/capacity 2>/dev/null)%"'

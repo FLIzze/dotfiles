@@ -30,7 +30,7 @@ link "$DOTFILES/hypr/hyprpaper.conf" ~/.config/hypr/hyprpaper.conf
 link "$DOTFILES/hypr/hypridle.conf" ~/.config/hypr/hypridle.conf
 link "$DOTFILES/rofi/" ~/.config/rofi
 link "$DOTFILES/kitty/" ~/.config/kitty
-link "$DOTFILES/tmux/.tmux.conf" ~/.tmux.conf
+link "$DOTFILES/.tmux.conf" ~/.tmux.conf
 link "$DOTFILES/.bashrc" ~/.bashrc
 link "$DOTFILES/.bash_aliases" ~/.bash_aliases
 link "$DOTFILES/.vimrc" ~/.vimrc
