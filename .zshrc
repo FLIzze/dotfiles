@@ -120,8 +120,14 @@ export FZF_CTRL_T_OPTS="
 	--bind 'ctrl-/:change-preview-window(down|hidden|)'"
 
 export FZF_ALT_C_OPTS="
-  --walker-skip .git,node_modules,target
-    --preview 'tree -C {}'"
+	--walker-skip .git,node_modules,target
+	--preview 'tree -C {}'"
+
+tmux_sessionizer() {
+  /home/flizze/Documents/dotfiles/scripts/.tmux-sessionizer
+}
+zle -N tmux_sessionizer
+bindkey '^F' tmux_sessionizer
 
 # --------------------
 # ALIASES
@@ -140,4 +146,5 @@ alias push=". $HOME/Documents/dotfiles/scripts/.push.sh"
 alias nabu=". $HOME/Documents/dotfiles/scripts/.nabu.sh"
 
 # time and battery info
+
 alias i='echo "$(timedatectl | awk -F": " "/Local time/ {print \$2}")"; echo "BAT0: $(cat /sys/class/power_supply/BAT0/capacity 2>/dev/null)%"; echo "BAT1: $(cat /sys/class/power_supply/BAT1/capacity 2>/dev/null)%"'

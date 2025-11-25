@@ -21,6 +21,7 @@ mkdir -p ~/.config/hypr/ ~/.config/rofi/ ~/.config/kitty
 echo "Downloading dependencies..."
 
 # yay -S tmux gvim hyprland hyprpaper hyprlock hypridle swaync rofi ripgrep zsh zsh-completions
+# curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
 
 echo "Creating symlinks..."
 
