@@ -20,7 +20,7 @@ mkdir -p ~/.config/hypr/ ~/.config/rofi/ ~/.config/kitty
 
 echo "Downloading dependencies..."
 
-# yay -S tmux gvim hyprland hyprpaper hyprlock hypridle swaync rofi ripgrep
+# yay -S tmux gvim hyprland hyprpaper hyprlock hypridle swaync rofi ripgrep zsh zsh-completions
 
 echo "Creating symlinks..."
 
@@ -31,8 +31,7 @@ link "$DOTFILES/hypr/hypridle.conf" ~/.config/hypr/hypridle.conf
 link "$DOTFILES/rofi/" ~/.config/rofi
 link "$DOTFILES/kitty/" ~/.config/kitty
 link "$DOTFILES/.tmux.conf" ~/.tmux.conf
-link "$DOTFILES/.bashrc" ~/.bashrc
-link "$DOTFILES/.bash_aliases" ~/.bash_aliases
+link "$DOTFILES/.zshrc" ~/.zshrc
 link "$DOTFILES/.vimrc" ~/.vimrc
 
 echo "All done!"
