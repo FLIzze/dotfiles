@@ -123,12 +123,6 @@ export FZF_ALT_C_OPTS="
 	--walker-skip .git,node_modules,target
 	--preview 'tree -C {}'"
 
-tmux_sessionizer() {
-  /home/flizze/Documents/dotfiles/scripts/.tmux-sessionizer
-}
-zle -N tmux_sessionizer
-bindkey '^F' tmux_sessionizer
-
 # --------------------
 # ALIASES
 # --------------------

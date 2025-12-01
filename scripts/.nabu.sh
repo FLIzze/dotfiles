@@ -1,19 +1,42 @@
 #!/bin/bash
 
-CLIENT_SESSION="Nabu"
-ROOT_DIR="$HOME/Documents/Nabu/WEBSITE"
+FRONT_SESSION="front"
+FRONT_DIR="$HOME/Documents/Nabu/front"
 
-if ! tmux has-session -t "$CLIENT_SESSION" 2>/dev/null; then
-    tmux new-session -d -s "$CLIENT_SESSION" -c "$ROOT_DIR" -n "vim"
-    tmux send-keys -t "$CLIENT_SESSION:vim" "vim src" C-m
+API_SESSION="api"
+API_DIR="$HOME/Documents/Nabu/api"
 
-    tmux new-window -t "$CLIENT_SESSION" -n "serve" -c "$ROOT_DIR"
-    tmux send-keys -t "$CLIENT_SESSION:serve" "bun run dev" C-m
+create_api() {
+	tmux new-session -d -s "$API_SESSION" -c "$API_DIR" -n "vim"
+	tmux send-keys -t "${API_SESSION}:vim" "vim src" C-m
 
-    tmux new-window -t "$CLIENT_SESSION" -n "tsc" -c "$ROOT_DIR"
-    tmux send-keys -t "$CLIENT_SESSION:tsc" "tsc --noEmit --watch" C-m
+	tmux new-window -t "$API_SESSION" -n "serve" -c "$API_DIR"
+	tmux send-keys -t "${API_SESSION}:serve" "bun run dev" C-m
 
-    tmux select-window -t "$CLIENT_SESSION:vim"
+	tmux new-window -t "$API_SESSION" -n "tsc" -c "$API_DIR"
+	tmux send-keys -t "${API_SESSION}:tsc" "tsc --noEmit --watch" C-m
+
+	tmux select-window -t "${API_SESSION}:vim"
+}
+
+create_front() {
+	tmux new-session -d -s "$FRONT_SESSION" -c "$FRONT_DIR" -n "vim"
+	tmux send-keys -t "${FRONT_SESSION}:vim" "vim src" C-m
+
+	tmux new-window -t "$FRONT_SESSION" -n "serve" -c "$FRONT_DIR"
+	tmux send-keys -t "${FRONT_SESSION}:serve" "bun run dev" C-m
+
+	tmux new-window -t "$FRONT_SESSION" -n "tsc" -c "$FRONT_DIR"
+	tmux send-keys -t "${FRONT_SESSION}:tsc" "tsc --noEmit --watch" C-m
+
+	tmux select-window -t "${FRONT_SESSION}:vim"
+}
+
+tmux has-session -t "$API_SESSION" 2>/dev/null || create_api
+tmux has-session -t "$FRONT_SESSION" 2>/dev/null || create_front
+
+if [ -n "$TMUX" ]; then
+	tmux switch-client -t "$FRONT_SESSION"
+else
+	tmux attach-session -t "$FRONT_SESSION"
 fi
-
-tmux attach-session -t "$CLIENT_SESSION"
