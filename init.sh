@@ -16,7 +16,7 @@ link() {
 }
 
 echo "Creating config directories if they don't exist..."
-mkdir -p ~/.config/hypr/ ~/.config/rofi/ ~/.config/kitty
+mkdir -p ~/.config/hypr/ ~/.config/rofi/ ~/.config/kitty ~/.config/waybar
 
 echo "Downloading dependencies..."
 
@@ -25,15 +25,13 @@ echo "Downloading dependencies..."
 
 echo "Creating symlinks..."
 
-link "$DOTFILES/hypr/hyprland.conf" ~/.config/hypr/hyprland.conf
-link "$DOTFILES/hypr/hyprlock.conf" ~/.config/hypr/hyprlock.conf
-link "$DOTFILES/hypr/hyprpaper.conf" ~/.config/hypr/hyprpaper.conf
-link "$DOTFILES/hypr/hypridle.conf" ~/.config/hypr/hypridle.conf
+link "$DOTFILES/hypr" ~/.config/hypr
 link "$DOTFILES/waybar" ~/.config/waybar
 link "$DOTFILES/rofi/" ~/.config/rofi
 link "$DOTFILES/kitty/" ~/.config/kitty
+
+link "$DOTFILES/.vimrc" ~/.vimrc
 link "$DOTFILES/.tmux.conf" ~/.tmux.conf
 link "$DOTFILES/.zshrc" ~/.zshrc
-link "$DOTFILES/.vimrc" ~/.vimrc
 
 echo "All done!"

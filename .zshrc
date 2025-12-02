@@ -129,16 +129,23 @@ export FZF_ALT_C_OPTS="
 
 alias d="docker"
 
-# zshrc
+# --------------------
+# ZSHRC
+# --------------------
 
 alias sz="source ~/.zshrc"
 alias ez="vim ~/.zshrc"
 
-# tmux
+# --------------------
+# TMUX
+# --------------------
 
 alias push=". $HOME/Documents/dotfiles/scripts/.push.sh"
 alias nabu=". $HOME/Documents/dotfiles/scripts/.nabu.sh"
 
-# time and battery info
+# --------------------
+# EDITOR
+# --------------------
 
-alias i='echo "$(timedatectl | awk -F": " "/Local time/ {print \$2}")"; echo "BAT0: $(cat /sys/class/power_supply/BAT0/capacity 2>/dev/null)%"; echo "BAT1: $(cat /sys/class/power_supply/BAT1/capacity 2>/dev/null)%"'
+export EDITOR=vim
+export VISUAL=vim
