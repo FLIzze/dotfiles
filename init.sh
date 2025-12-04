@@ -35,8 +35,9 @@ echo "Downloading dependencies..."
 # Utils 
 # --------------------
 
-yay -S tmux gvim hyprland hyprpaper hyprlock hypridle swaync rofi ripgrep zsh zsh-completions waybar unzip fzf xdg-utils
+yay -S tmux gvim hyprland hyprpaper hyprlock hypridle swaync rofi ripgrep zsh zsh-completions waybar unzip fzf xdg-utils bluez bluez-utils dolphin
 curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
+sudo systemctl enable --now bluetooth.service
 
 # --------------------
 # Driver

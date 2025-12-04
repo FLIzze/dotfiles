@@ -26,7 +26,8 @@ set laststatus=1
 
 map <silent> <leader>e :Ex<CR>
 map <leader>s :so %<CR>
-map <silent> <leader>y :nohl<CR>
+map <silent> <leader>u :nohl<CR>
+map <silent> <leader>y :"+y<CR>
 map <silent> <leader>t :!ctags -R --exclude=node_modules --exclude=git .<CR>
 map <leader>f :find 
 
