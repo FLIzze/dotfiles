@@ -32,7 +32,7 @@ link "$DOTFILES/.zshrc" ~/.zshrc
 echo "Downloading dependencies..."
 
 # Utils 
-yay -S tmux gvim hyprland hyprpaper hyprlock hypridle swaync rofi ripgrep zsh zsh-completions waybar unzip fzf
+yay -S tmux gvim hyprland hyprpaper hyprlock hypridle swaync rofi ripgrep zsh zsh-completions waybar unzip fzf xdg-utils
 curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
 
 # Driver
@@ -44,7 +44,6 @@ curl -L -o 0xProto.zip "https://release-assets.githubusercontent.com/github-prod
 unzip 0xProto.zip
 sudo mkdir -p /usr/share/fonts/
 sudo mv 0xProtoNerdFontMono-Regular.ttf /usr/share/fonts/
-sudo fc-cache -f -v
 
 cd -
 
