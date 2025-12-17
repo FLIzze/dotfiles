@@ -1,23 +1,14 @@
-;; ------
-;; | UI |
-;; ------
-
 (setq inhibit-startup-message t)
 
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
 (tooltip-mode -1)
-(set-fringe-mode 10)
-
 (menu-bar-mode -1)
 
 (setq make-backup-files nil)
-
-(setq visible-bell nil)
-
-(set-frame-font "0x Proto Nerd Font 18" nil t)
-
 (setq auto-save-default nil)
+
+(set-frame-font "IosevkaTerm Nerd Font 23" nil t)
 
 (setq custom-file (locate-user-emacs-file "custom.el"))
 (when (file-exists-p custom-file)
@@ -26,22 +17,17 @@
 (global-display-line-numbers-mode t)
 (setq display-line-numbers-type 'relative)
 
-(global-set-key (kbd "C-c r") #'compile)
-
-;; -----------------
-;; | Packages / UI |
-;; -----------------
+(global-set-key (kbd "C-c c") 'compile)
 
 (require 'package)
 
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
-                         ("melpa-stable" . "https://stable.melpa.org/packages/")
                          ("org" . "https://orgmode.org/elpa/")
                          ("elpa" . "https://elpa.gnu.org/packages/")))
 
 (package-initialize)
 (unless package-archive-contents
-  (package-refresh-conents))
+  (package-refresh-contents))
 
 (require 'use-package)
 (setq use-package-always-ensure t)
@@ -51,7 +37,6 @@
   (vertico-mode))
 
 (use-package orderless
-  :ensure t
   :custom
   (completion-styles '(orderless basic))
   (completion-category-overrides '((file (styles partial-completion))))
@@ -65,96 +50,78 @@
   :config
   (global-treesit-auto-mode))
 
-(defvar my-consult-map (make-sparse-keymap))
-(define-key global-map (kbd "C-g") my-consult-map)
+(use-package magit)
 
-(setq-default tab-width 4)
-(setq-default indent-tabs-mode nil)
-(setq-default standard-indent 4)
+(setq-default
+ tab-width 4
+ standard-indent 4
+ indent-tabs-mode nil)
 
-;; -----------
-;; | CONSULT |
-;; -----------
+(use-package org-bullets
+  :hook (org-mode . org-bullets-mode))
 
-(use-package consult
-  :config)
-
-(defvar my-search-map (make-sparse-keymap)
-  "Keymap for search commands.")
-
-(define-key global-map (kbd "C-,") my-search-map)
-
-(define-key my-search-map (kbd "f") #'consult-find)
-(define-key my-search-map (kbd "g") #'consult-ripgrep)
-(define-key my-search-map (kbd "d") #'consult-flymake)
-(define-key my-search-map (kbd "y") #'consult-yank-pop)
-(define-key my-search-map (kbd "w") #'consult-buffer-other-window)
-
-(setq consult-find-args "fd --type f")
-
-;; ----------
-;; | MAGGIT |
-;; ----------
-
-(defvar my-git-map (make-sparse-keymap))
-(define-key global-map (kbd "C-g") my-git-map)
-
-(define-key my-git-map (kbd "s") 'magit-status)
-(define-key my-git-map (kbd "a") 'magit-stage)
-(define-key my-git-map (kbd "c") 'magit-commit)
-(define-key my-git-map (kbd "p") 'magit-push)
-(define-key my-git-map (kbd "u") 'magit-pull)
-(define-key my-git-map (kbd "d") 'magit-diff)
-(define-key my-git-map (kbd "l") 'magit-log)
-(define-key my-git-map (kbd "b") 'magit-branch)
-(define-key my-git-map (kbd "m") 'magit-merge)
-(define-key my-git-map (kbd ".") 'magit-file-dispatch)
-
-(load-theme 'tango-dark)
-
-;; -------
-;; | LSP |
-;; -------
+(load-theme 'gruber-darker)
 
 (use-package eglot
-  :ensure t
-  :hook ((go-mode python-mode typescript-mode c-mode c++-mode js-mode web-mode) . eglot-ensure))
+  :commands eglot
+  :hook
+  ((go-mode
+    python-mode
+    typescript-mode
+    js-mode
+    js-ts-mode
+    typescript-ts-mode
+    web-mode
+    svelte-mode
+    yaml-mode) . eglot-ensure)
+  :config
+  (add-to-list 'eglot-server-programs '(go-mode . ("gopls")))
+  (add-to-list 'eglot-server-programs
+               '((typescript-mode js-mode js-ts-mode typescript-ts-mode web-mode)
+                 . ("typescript-language-server" "--stdio")))
+  (add-to-list 'eglot-server-programs
+               '(python-mode . ("pyright-langserver" "--stdio")))
+  (add-to-list 'eglot-server-programs
+               '(svelte-mode . ("svelteserver" "--stdio")))
+  (add-to-list 'eglot-server-programs
+               '(yaml-mode . ("yaml-language-server" "--stdio")))
+  (setq eglot-confirm-server-initiated-edits nil))
 
-(use-package go-mode :ensure t)
-(use-package typescript-mode :ensure t)
-(use-package web-mode :ensure t)
+(use-package web-mode
+  :mode (("\\.html?\\'" . web-mode)
+         ("\\.svelte\\'" . web-mode)
+         ("\\.jsx?\\'" . web-mode)
+         ("\\.tsx?\\'" . web-mode))
+  :hook ((web-mode . (lambda ()
+                       (when (string-equal "svelte" (file-name-extension buffer-file-name))
+                         (eglot-ensure)))))
+  :config
+  (setq web-mode-enable-auto-quoting nil))
 
-(add-hook 'go-mode-hook (lambda () (setq indent-tabs-mode t)))
-(add-hook 'python-mode-hook (lambda () (setq python-indent-offset 4)))
-(add-hook 'typescript-mode-hook (lambda () (setq typescript-indent-level 4)))
+(use-package svelte-mode
+  :mode "\\.svelte\\'"
+  :hook (svelte-mode . eglot-ensure))
 
-(add-hook 'web-mode-hook
-          (lambda ()
-            (setq web-mode-markup-indent-offset 4)
-            (setq web-mode-css-indent-offset 4)
-            (setq web-mode-code-indent-offset 4)))
+(use-package multiple-cursors
+  :ensure t)
 
-;; (add-to-list 'eglot-server-programs '(go-mode . ("gopls")))
-;; (add-to-list 'eglot-server-programs '(python-mode . ("pylsp")))
-;; (add-to-list 'eglot-server-programs '((typescript-mode web-mode) . ("typescript-language-server" "--stdio")))
-;; (add-to-list 'eglot-server-programs '((c-mode c++-mode) . ("clangd")))
+(use-package multiple-cursors)
+(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
-(defvar my-lsp-map (make-sparse-keymap))
-(define-key global-map (kbd "C-.") my-lsp-map)
+(use-package company
+  :bind ("C-c n" . company-complete)
+  :config
+  (setq company-idle-delay nil))
 
-(define-key my-lsp-map (kbd "d") #'eglot-find-declaration)
-(define-key my-lsp-map (kbd "D") #'eglot-find-definition)
-(define-key my-lsp-map (kbd "r") #'eglot-find-references)
-(define-key my-lsp-map (kbd "a") #'eglot-code-actions)
-(define-key my-lsp-map (kbd "R") #'eglot-rename)
-(define-key my-lsp-map (kbd "f") #'eglot-format)
+(require 'company-quickhelp)
 
-(define-key my-lsp-map (kbd "n") #'flymake-goto-next-error)
-(define-key my-lsp-map (kbd "p") #'flymake-goto-prev-error)
+(global-company-mode 1)
+(company-quickhelp-mode 1)
 
-;; -------
-;; | ORG |
-;; -------
+;; (global-whitespace-mode 0)
+;; (setq whitespace-style '(face tabs spaces trailing tab-mark space-mark))
 
-(require 'org-bullets)
-(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+;; (add-hook 'org-mode-hook (lambda () (whitespace-mode -1)))
