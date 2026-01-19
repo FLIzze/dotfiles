@@ -150,7 +150,4 @@ alias nabu=". $HOME/Documents/dotfiles/scripts/.nabu.sh"
 export EDITOR=vim
 export VISUAL=vim
 
-# Mermaid-CLI Configuration for Arch Linux
-export PATH="$HOME/.npm-global/bin:$PATH"
-export PUPPETEER_EXECUTABLE_PATH="/usr/bin/chromium"
-export PUPPETEER_ARGS="--no-sandbox --disable-setuid-sandbox"
+export HYPRSHOT_DIR="$HOME/Pictures"
