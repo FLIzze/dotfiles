@@ -87,3 +87,10 @@
 
 
 (global-set-key (kbd "C-c c") 'compile)
+
+(require 'org)
+(require 'ob-plantuml)
+(require 'ox-reveal)
+
+(setq plantuml-jar-path (expand-file-name "~/bin/plantuml.jar"))
+
