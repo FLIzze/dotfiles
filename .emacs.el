@@ -18,7 +18,6 @@
 (setq display-line-numbers-type 'relative)
 
 (require 'package)
-
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
                             ("org" . "https://orgmode.org/elpa/")
                             ("elpa" . "https://elpa.gnu.org/packages/")))
@@ -61,7 +60,6 @@
 (add-hook 'c-mode-hook 'my-c-mode-hook)
 
 (setq python-indent-offset 4)
-
 (setq lisp-indent-offset 4)
 (setq emacs-lisp-indent-offset 4)
 
@@ -80,17 +78,26 @@
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
-(use-package whitespace
-    :config
-    (global-whitespace-mode 1)
-    (setq whitespace-style '(face tabs spaces trailing tab-mark space-mark)))
-
-
 (global-set-key (kbd "C-c c") 'compile)
 
-(require 'org)
-(require 'ob-plantuml)
-(require 'ox-reveal)
+(require 'ob-mermaid)
+(use-package ox-reveal
+  :vc (:url "https://github.com/yjwen/org-reveal.git"
+       :rev :newest)
+  :after org)
 
-(setq plantuml-jar-path (expand-file-name "~/bin/plantuml.jar"))
+(setq org-babel-load-languages
+      '((emacs-lisp . t)
+           (mermaid . t)
+    (shell . t)))
 
+(use-package exec-path-from-shell
+  :ensure t
+  :config
+    (exec-path-from-shell-initialize))
+
+(use-package dumb-jump
+  :ensure t
+  :config)
+(put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)

@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =1
+let g:netrw_dirhist_1='/home/flizze/Documents/CEREBRO/doc'
+let g:netrw_dirhist_0='/home/flizze/.vim/pack/tpope/start'
+let g:netrw_dirhist_9='/home/flizze/Documents/CEREBRO/doc'
+let g:netrw_dirhist_8='/home/flizze/Documents/CEREBRO/front'
+let g:netrw_dirhist_7='/home/flizze/Documents/CEREBRO'
+let g:netrw_dirhist_6='/home/flizze/.cargo'
+let g:netrw_dirhist_5='/home/flizze'
+let g:netrw_dirhist_4='/home/flizze/.vim/pack/stevearc'
+let g:netrw_dirhist_3='/home/flizze/.vim/pack/stevearc/start'
+let g:netrw_dirhist_2='/home/flizze/.vim/pack'

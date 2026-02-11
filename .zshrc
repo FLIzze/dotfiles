@@ -151,3 +151,5 @@ export EDITOR=vim
 export VISUAL=vim
 
 export HYPRSHOT_DIR="$HOME/Pictures"
+export PATH="$(npm prefix -g)/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
