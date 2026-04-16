@@ -1,7 +1,7 @@
-font_size 22
+font_size 23
 
 # BEGIN_KITTY_FONTS
-font_family      family="IosevkaTerm Nerd Font"
+font_family      family="Iosevka Term"
 bold_font        auto
 italic_font      auto
 bold_italic_font auto
@@ -9,6 +9,6 @@ bold_italic_font auto
 
 
 # BEGIN_KITTY_THEME
-# Adwaita light
+# GitHub Light
 include current-theme.conf
 # END_KITTY_THEME

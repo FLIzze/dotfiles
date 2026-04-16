@@ -124,12 +124,6 @@ export FZF_ALT_C_OPTS="
 	--preview 'tree -C {}'"
 
 # --------------------
-# ALIASES
-# --------------------
-
-alias d="docker"
-
-# --------------------
 # ZSHRC
 # --------------------
 
@@ -142,6 +136,15 @@ alias ez="vim ~/.zshrc"
 
 alias push=". $HOME/Documents/dotfiles/scripts/.push.sh"
 alias nabu=". $HOME/Documents/dotfiles/scripts/.nabu.sh"
+alias cerebro=". $HOME/Documents/dotfiles/scripts/.cerebro.sh"
+
+# --------------------
+# ALIAS
+# --------------------
+
+alias sc="sudo systemctl"
+alias d="docker"
+alias dc="docker compose"
 
 # --------------------
 # EDITOR
@@ -150,6 +153,5 @@ alias nabu=". $HOME/Documents/dotfiles/scripts/.nabu.sh"
 export EDITOR=vim
 export VISUAL=vim
 
-export HYPRSHOT_DIR="$HOME/Pictures"
 export PATH="$(npm prefix -g)/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
