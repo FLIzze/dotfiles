@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DOTFILES="$HOME/Documents/dotfiles"
+DOTFILES="$HOME/Documents/perso/dotfiles"
 
 link() {
 	local src=$1
