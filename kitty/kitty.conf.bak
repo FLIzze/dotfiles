@@ -1,4 +1,4 @@
-font_size 23
+font_size 16
 
 # BEGIN_KITTY_FONTS
 font_family      family="Iosevka Term"
@@ -9,6 +9,6 @@ bold_italic_font auto
 
 
 # BEGIN_KITTY_THEME
-# GitHub Light
+# Adwaita light
 include current-theme.conf
 # END_KITTY_THEME

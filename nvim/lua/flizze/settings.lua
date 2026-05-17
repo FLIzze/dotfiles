@@ -11,3 +11,8 @@ o.tabstop = 4
 o.expandtab = true
 
 o.scrolloff = 8
+
+o.undofile = true
+o.undodir = "/home/flizze/.vim/undo"
+o.undolevels = 1000
+o.undoreload = 10000
