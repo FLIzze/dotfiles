@@ -24,8 +24,15 @@ return {
         vim.keymap.set("n", "<leader>fd", builtin.diagnostics, { desc = "Find diagnostics" })
         vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Live grep" })
 
+        vim.keymap.set("n", "<leader>fa", function()
+            builtin.find_files({
+                cwd = vim.fn.expand("~/Documents"),
+                hidden = true,
+                no_ignore = true,
+            })
+        end)
+
         vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Buffers" })
         vim.keymap.set("n", "<leader>fm", builtin.man_pages, { desc = "Find mans" })
-
     end,
 }
