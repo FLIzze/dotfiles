@@ -56,7 +56,7 @@ return {
             mapping = cmp.mapping.preset.insert({
                 ["<C-d>"] = cmp.mapping.scroll_docs(4),
                 ["<C-u>"] = cmp.mapping.scroll_docs(-4),
-                ["<CR>"] = cmp.mapping(confirm_or_expand_or_complete, { "i", "s" }),
+                ["<C-space>"] = cmp.mapping(confirm_or_expand_or_complete, { "i", "s" }),
             }),
             sources = cmp.config.sources({
                 { name = "nvim_lsp" },
