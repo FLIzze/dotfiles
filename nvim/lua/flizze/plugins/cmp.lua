@@ -2,12 +2,12 @@ return {
     "hrsh7th/nvim-cmp",
     event = "InsertEnter",
     dependencies = {
-        "hrsh7th/cmp-buffer", 
-        "hrsh7th/cmp-path", 
+        "hrsh7th/cmp-buffer",
+        "hrsh7th/cmp-path",
         "hrsh7th/cmp-vsnip",
         "hrsh7th/vim-vsnip",
         "rafamadriz/friendly-snippets",
-        "onsails/lspkind.nvim", 
+        "onsails/lspkind.nvim",
     },
     config = function()
         local cmp = require("cmp")
@@ -67,8 +67,8 @@ return {
         })
 
         vim.cmd([[
-      set completeopt=menuone,noinsert,noselect
-      highlight! default link CmpItemKind CmpItemMenuDefault
-    ]])
+        set completeopt=menuone,noinsert,noselect
+        highlight! default link CmpItemKind CmpItemMenuDefault
+        ]])
     end,
 }
