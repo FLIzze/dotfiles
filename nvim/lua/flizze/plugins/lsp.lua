@@ -2,7 +2,6 @@ return {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
-        "hrsh7th/cmp-nvim-lsp",
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
         { "folke/neodev.nvim", opts = {} },
@@ -15,7 +14,6 @@ return {
             severity_sort = true,
         })
 
-        local capabilities = require("cmp_nvim_lsp").default_capabilities()
         local on_attach = function(client, bufnr)
             client.server_capabilities.documentFormattingProvider = false
             client.server_capabilities.documentRangeFormattingProvider = false
