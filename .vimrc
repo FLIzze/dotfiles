@@ -57,8 +57,9 @@ endif
 
 call plug#begin()
 
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
 
 call plug#end()
 
@@ -67,3 +68,5 @@ nnoremap <silent> <leader>fg :GFiles<CR>
 nnoremap <silent> <leader>fa :Files ~/Documents/<CR>
 
 nnoremap <leader>gf :Rg 
+
+nnoremap <C-g> :G<CR>
