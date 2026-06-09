@@ -58,6 +58,7 @@ return {
                 ["<C-u>"] = cmp.mapping.scroll_docs(-4),
                 ["<C-space>"] = cmp.mapping(confirm_or_expand_or_complete, { "i", "s" }),
             }),
+
             sources = cmp.config.sources({
                 { name = "nvim_lsp" },
                 { name = "vsnip" },
