@@ -42,6 +42,8 @@ map <silent> <leader>cn :cnext<CR>
 map <silent> <leader>cp :cprev<CR>
 map <silent> <leader>co :copen<CR>
 
+map <leader>f :find 
+
 map <silent> <c-k> :wincmd k<CR>
 map <silent> <c-j> :wincmd j<CR>
 map <silent> <c-h> :wincmd h<CR>
