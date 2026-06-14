@@ -87,14 +87,14 @@
     swaybg
     networkmanager
     unzip
-    waybar
     fzf
     ripgrep
     tmux
-    emacs
     fastfetch
     codex
+    pkgs.emacs-pgtk
   ];
+
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
