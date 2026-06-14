@@ -84,14 +84,16 @@
     niri
     fuzzel
     swaylock
+    swaybg
     networkmanager
     unzip
+    waybar
     fzf
     ripgrep
-    waybar
     tmux
     emacs
     fastfetch
+    codex
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
