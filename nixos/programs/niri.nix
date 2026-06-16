@@ -1,3 +1,7 @@
+{ pkgs, ... }: {
+  home.packages = [ pkgs.niri ];
+
+  xdg.configFile."niri/config.kdl".text = ''
 // This config is in the KDL format: https://kdl.dev
 // "/-" comments out the following node.
 // Check the wiki for a full description of the configuration:
@@ -43,13 +47,9 @@ input {
         // disabled-on-external-mouse
     }
 
-    mouse {
-        // off
-        // natural-scroll
-        // accel-speed 0.2
-        // accel-profile "flat"
-        // scroll-method "no-scroll"
-    }
+    // mouse {
+    //      accel-profile "flat"
+    // }
 
     trackpoint {
         // off
@@ -608,4 +608,6 @@ binds {
     // Powers off the monitors. To turn them back on, do any input like
     // moving the mouse or pressing any other key.
     Mod+Shift+P { power-off-monitors; }
+}
+  '';
 }

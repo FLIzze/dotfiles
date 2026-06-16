@@ -1,0 +1,28 @@
+{ ... } : {
+  programs.tmux = {
+    enable = true;
+    extraConfig = ''
+      set -g prefix C-s
+
+      set -g default-terminal "tmux-256color"
+      set -ga terminal-overrides ',tmux-256color:Tc'
+
+      set -g base-index 1
+
+      bind-key h select-pane -L
+      bind-key j select-pane -D
+      bind-key k select-pane -U
+      bind-key l select-pane -R
+
+      bind-key -n C-H resize-pane -L 5
+      bind-key -n C-J resize-pane -D 5
+      bind-key -n C-K resize-pane -U 5
+      bind-key -n C-L resize-pane -R 5
+
+      set -g status-right ""
+
+      set -g window-status-current-format "#[fg=green,bg=black] #I:#W "
+      set -g window-status-format "#[fg=black,bg=green] #I:#W "
+    '';
+  };
+}
