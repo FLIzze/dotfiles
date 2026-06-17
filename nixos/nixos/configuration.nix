@@ -88,6 +88,7 @@
     protonvpn-gui
     qbittorrent
     mpv
+    waybar
   ];
 
   programs.zsh.enable = true;
