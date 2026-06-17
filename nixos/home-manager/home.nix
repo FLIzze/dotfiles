@@ -1,4 +1,4 @@
-steam
+{
 	inputs,
 	lib,
 	config,
