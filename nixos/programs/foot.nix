@@ -1,7 +1,6 @@
-{ ... }: {
-  programs.foot = {
-    enable = true;
-
-    settings.main.font = "IosevkaTermNerdFontMono-Regular:size=16";
-  };
+{ ... } : { 
+  programs.foot = { 
+    enable = true; 
+    settings.main.font = "IosevkaTerm Nerd Font:size=17";
+  }; 
 }

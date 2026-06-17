@@ -6,12 +6,13 @@
 	...
 } : {
   imports = [
-    ../programs/vim.nix
-    ../programs/niri.nix
+    ../programs/vim/vim.nix
+    ../programs/niri/niri.nix
+    ../programs/tmux/tmux.nix
     ../programs/zsh.nix
     ../programs/foot.nix
     ../programs/git.nix
-    ../programs/tmux.nix
+    ../programs/firefox.nix
   ];
 
   nixpkgs = {

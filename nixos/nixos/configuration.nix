@@ -52,23 +52,40 @@
     channel.enable = false;
   };
 
+  fonts = {
+    packages = with pkgs; [
+      nerd-fonts.iosevka-term
+    ];
+
+    fontconfig = {
+      enable = true;
+
+      defaultFonts = {
+        monospace = [ "IosevkaTerm Nerd Font" ];
+        sansSerif = [ "IosevkaTerm Nerd Font" ];
+        serif = [ "IosevkaTerm Nerd Font" ];
+      };
+    };
+  };
+
   environment.systemPackages = with pkgs; [
     wget
     fuzzel
     vim
     swaylock
     swaybg
-	tmux
+    tmux
     networkmanager
     git
     zip
     unzip
     tree
-	foot
+    foot
     ripgrep
     niri
+    fzf
     fastfetch
-	home-manager
+    home-manager
   ];
 
   programs.zsh.enable = true;

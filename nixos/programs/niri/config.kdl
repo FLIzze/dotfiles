@@ -1,7 +1,3 @@
-{ pkgs, ... }: {
-  home.packages = [ pkgs.niri ];
-
-  xdg.configFile."niri/config.kdl".text = ''
 // This config is in the KDL format: https://kdl.dev
 // "/-" comments out the following node.
 // Check the wiki for a full description of the configuration:
@@ -76,9 +72,9 @@ input {
 // Find more information on the wiki:
 // https://niri-wm.github.io/niri/Configuration:-Outputs
 // Remember to uncomment the node by removing "/-"!
-output "DP-1" {
-    mode "1920x1080@240.006"
-    scale 1
+output "eDP-1" {
+    mode "1920x1080@60"
+    scale 1.2
 }
 
 // Settings that influence how windows are positioned and sized.
@@ -608,6 +604,4 @@ binds {
     // Powers off the monitors. To turn them back on, do any input like
     // moving the mouse or pressing any other key.
     Mod+Shift+P { power-off-monitors; }
-}
-  '';
 }
