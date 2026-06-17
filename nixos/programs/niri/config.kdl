@@ -72,9 +72,9 @@ input {
 // Find more information on the wiki:
 // https://niri-wm.github.io/niri/Configuration:-Outputs
 // Remember to uncomment the node by removing "/-"!
-output "eDP-1" {
-    mode "1920x1080@60"
-    scale 1.2
+output "DP-1" {
+    mode "1920x1080@240.006"
+    scale 1
 }
 
 // Settings that influence how windows are positioned and sized.
@@ -240,6 +240,7 @@ layout {
 
 // This line starts waybar, a commonly used bar for Wayland compositors.
 // spawn-at-startup "swaybg" "-i" "/home/flizze/Documents/perso/dotfiles/ping.webp" "-m" "fill" 
+spawn-at-startup "Xwayland" ":0"
 spawn-at-startup "mako"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:

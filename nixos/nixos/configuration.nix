@@ -75,7 +75,6 @@
     swaylock
     swaybg
     tmux
-    networkmanager
     git
     zip
     unzip
@@ -86,9 +85,13 @@
     fzf
     fastfetch
     home-manager
+    protonvpn-gui
+    qbittorrent
+    mpv
   ];
 
   programs.zsh.enable = true;
+  programs.steam.enable = true;
   programs.firefox.enable = true;
 
   users.users.flizze = {
@@ -96,7 +99,7 @@
     isNormalUser = true;
     openssh.authorizedKeys.keys = [
     ];
-    extraGroups = ["wheel"];
+    extraGroups = ["wheel" "networkmanager"];
     shell = pkgs.zsh;
   };
 

@@ -1,4 +1,4 @@
-{
+steam
 	inputs,
 	lib,
 	config,
@@ -24,6 +24,9 @@
   home = {
     username = "flizze";
     homeDirectory = "/home/flizze";
+
+    packages = with pkgs; [
+    ];
   };
 
   programs.home-manager.enable = true;
