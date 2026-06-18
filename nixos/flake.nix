@@ -1,5 +1,5 @@
 {
-  description = "Your new nix config";
+  description = "NixOS configuration";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
@@ -8,16 +8,10 @@
 
     home-manager.url = "github:nix-community/home-manager/release-25.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    home-manager,
-    nur,
-    ...
-  } @ inputs: let
+  outputs = { self, nixpkgs, home-manager, nur, ... } @ inputs:
+  let
     systems = [
       "aarch64-linux"
       "i686-linux"
@@ -26,37 +20,42 @@
       "x86_64-darwin"
     ];
     forAllSystems = nixpkgs.lib.genAttrs systems;
-  in {
-    packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
+
+    mkHost = { hostname, system ? "x86_64-linux", users ? [ "flizze" ] }:
+      nixpkgs.lib.nixosSystem {
+        inherit system;
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./hosts/${hostname}/default.nix
+          { networking.hostName = hostname; }
+        ]
+        ++ map (u: ./users/${u}.nix) users;
+      };
+
+    mkHome = { username, hostname, system ? "x86_64-linux" }:
+      home-manager.lib.homeManagerConfiguration {
+        pkgs = import nixpkgs {
+          inherit system;
+          overlays = [ nur.overlays.default ];
+        };
+        extraSpecialArgs = { inherit inputs; };
+        modules = [ ./home-manager/home.nix ];
+      };
+  in
+  {
+    packages  = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
     formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
 
-    overlays = import ./overlays {inherit inputs;};
-    nixosModules = import ./modules/nixos;
-    homeManagerModules = import ./modules/home-manager;
+    overlays = import ./overlays { inherit inputs; };
 
     nixosConfigurations = {
-      bordeaux = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs;};
-        modules = [
-          ./nixos/configuration.nix
-        ];
-      };
+      desktop = mkHost { hostname = "desktop"; };
+      laptop   = mkHost { hostname = "laptop"; };
     };
 
     homeConfigurations = {
-      "flizze@bordeaux" = home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs {
-          system = "x86_64-linux";
-          overlays = [
-            nur.overlays.default
-          ];
-        };
-
-        extraSpecialArgs = {inherit inputs;};
-        modules = [
-          ./home-manager/home.nix
-        ];
-      };
+      "flizze@desktop" = mkHome { username = "flizze"; hostname = "dekstop"; };
+      "flizze@laptop"  = mkHome { username = "flizze"; hostname = "laptop"; };
     };
   };
 }

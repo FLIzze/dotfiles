@@ -24,12 +24,9 @@
   home = {
     username = "flizze";
     homeDirectory = "/home/flizze";
-
-    packages = with pkgs; [
-    ];
+    packages = with pkgs; [];
+    stateVersion = "25.11";
   };
 
   programs.home-manager.enable = true;
-
-  home.stateVersion = "25.11";
 }
