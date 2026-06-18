@@ -10,17 +10,15 @@
   };
 
   boot.loader = {
-    loader = {
-      systemd-boot.enable      = true;
-      efi.canTouchEfiVariables = true;
-    };
-
-    kernelPackages = pkgs.linuxPackages_latest;
+    systemd-boot.enable      = true;
+    efi.canTouchEfiVariables = true;
   };
 
   networking.networkmanager.enable = true;
-
   time.timeZone = "Europe/Paris";
+
+  programs.steam.enable = true;
+  programs.zsh.enable   = true;
 
   nixpkgs = {
     overlays = [
@@ -52,13 +50,14 @@
   };
 
   environment.systemPackages = with pkgs; [
-    wget fuzzel vim swaylock swaybg tmux git zip unzip tree foot ripgrep niri fzf fastfetch home-manager protonvpn-gui
-    qbittorrent mpv waybar
+    wget 
+    zip 
+    unzip 
+    tree 
+    ripgrep 
+    home-manager 
+    vim
   ];
-
-  programs.zsh.enable     = true;
-  programs.steam.enable   = true;
-  programs.firefox.enable = true;
 
   services.openssh = {
     enable = true;

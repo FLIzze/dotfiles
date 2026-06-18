@@ -24,9 +24,17 @@
   home = {
     username = "flizze";
     homeDirectory = "/home/flizze";
-    packages = with pkgs; [];
+    packages = with pkgs; [
+      fuzzel 
+      swaylock 
+      swaybg 
+      fzf 
+      fastfetch 
+      protonvpn-gui
+      qbittorrent 
+      mpv 
+      waybar
+    ];
     stateVersion = "25.11";
   };
-
-  programs.home-manager.enable = true;
 }
