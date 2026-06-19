@@ -1,0 +1,14 @@
+input {
+    keyboard {
+        numlock
+    }
+
+    touchpad {
+        tap
+    }
+
+    trackpoint {
+    }
+
+    warp-mouse-to-focus
+}

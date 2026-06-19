@@ -1,0 +1,6 @@
+output "DP-1" {
+    mode "1920x1080@240.006"
+    scale 1
+}
+
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
