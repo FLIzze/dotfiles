@@ -40,6 +40,7 @@
       swaylock 
       swaybg 
       fzf 
+      feh
       fastfetch 
       protonvpn-gui
       qbittorrent 
@@ -54,6 +55,7 @@
       libnotify
       playerctl
       brightnessctl
+      btop
     ];
     file.".vim/undodir/.keep".text = "";
 
