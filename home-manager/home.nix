@@ -26,6 +26,12 @@
     obs-studio.enable = true;
   };
 
+  services.mako = {
+    enable = true;
+
+    settings.default-timeout = 5000; 
+  };
+
   home = {
     username = "flizze";
     homeDirectory = "/home/flizze";
@@ -45,6 +51,7 @@
       onlyoffice-desktopeditors
       prismlauncher
       spotify
+      libnotify
     ];
     file.".vim/undodir/.keep".text = "";
 
