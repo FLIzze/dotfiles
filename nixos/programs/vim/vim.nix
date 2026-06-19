@@ -6,7 +6,6 @@
       fzf-vim
       vim-surround
       vim-commentary
-      undotree
     ];
 
     extraConfig = builtins.readFile ./.vimrc;

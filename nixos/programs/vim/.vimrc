@@ -28,15 +28,8 @@ set laststatus=1
 noremap <silent> <leader>e :Ex<CR>
 noremap <leader>s :so %<CR>
 noremap <silent> <leader>n :nohl<CR>
+
 noremap <silent> <leader>t :!ctags -R --exclude=node_modules --exclude=.git --exclude=.next .<CR>
-
-noremap <silent> <leader>bn :bn<CR>
-noremap <silent> <leader>bp :bp<CR>
-noremap <silent> <leader>bd :bd<CR>
-noremap <silent> <leader>bl :ls<CR>
-noremap <leader>bb :b
-
-noremap <leader>c :set autochdir<CR>
 
 noremap <silent> <leader>cn :cnext<CR>
 noremap <silent> <leader>cp :cprev<CR>
@@ -51,13 +44,16 @@ noremap <silent> <leader>o :only<CR>
 noremap <leader>y "+y
 xnoremap <leader>p "_dP
 
+nnoremap <silent> <leader>fw :Files<CR>
+nnoremap <silent> <leader>fg :GFiles<CR>
+nnoremap <silent> <leader>fa :Files ~/<CR>
+nnoremap <silent> <leader>fb :Buffers<CR>
+
 if executable('rg')
 	set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case\ --glob\ '!node_modules/**'\ --glob\ '!tags'
 endif
 
-nnoremap <silent> <leader>fw :Files<CR>
-nnoremap <silent> <leader>fg :GFiles<CR>
-nnoremap <silent> <leader>fa :Files ~/Documents/<CR>
-nnoremap <silent> <leader>fb :Buffers<CR>
+if executable('fd')
+    let $FZF_DEFAULT_COMMAND = 'fd --type f --exclude node_modules'
+endif
 
-nnoremap <silent> <leader>u :UndotreeToggle<CR>

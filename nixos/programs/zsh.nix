@@ -13,4 +13,8 @@
     enable = true;
     enableZshIntegration = true;
   };
+
+  home.sessionVariables = {
+    FZF_ALT_C_COMMAND = "fd --type d . ~/Documents";
+  };
 }

@@ -33,9 +33,11 @@
       fastfetch 
       protonvpn-gui
       qbittorrent 
+      bat
       waybar
     ];
     file.".vim/undodir/.keep".text = "";
+
     stateVersion = "25.11";
   };
 }

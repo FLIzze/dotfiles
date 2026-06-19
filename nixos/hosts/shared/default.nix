@@ -55,6 +55,7 @@
     unzip 
     tree 
     ripgrep 
+    fd
     home-manager 
     vim
   ];
