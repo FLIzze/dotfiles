@@ -29,7 +29,7 @@
   services.mako = {
     enable = true;
 
-    settings.default-timeout = 5000; 
+    settings.default-timeout = 10000; 
   };
 
   home = {
@@ -52,6 +52,8 @@
       prismlauncher
       spotify
       libnotify
+      playerctl
+      brightnessctl
     ];
     file.".vim/undodir/.keep".text = "";
 
