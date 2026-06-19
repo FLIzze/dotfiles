@@ -35,6 +35,7 @@
       qbittorrent 
       bat
       waybar
+      xwayland-satellite
     ];
     file.".vim/undodir/.keep".text = "";
 
