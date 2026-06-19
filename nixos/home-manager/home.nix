@@ -22,6 +22,10 @@
 	};
   };
 
+  programs = {
+    obs-studio.enable = true;
+  };
+
   home = {
     username = "flizze";
     homeDirectory = "/home/flizze";
@@ -35,10 +39,12 @@
       qbittorrent 
       bat
       waybar
+      hyprpicker
       xwayland-satellite
       pandoc
       onlyoffice-desktopeditors
       prismlauncher
+      spotify
     ];
     file.".vim/undodir/.keep".text = "";
 
