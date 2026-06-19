@@ -13,6 +13,7 @@
     ../programs/foot.nix
     ../programs/git.nix
     ../programs/firefox.nix
+    ../programs/mpv.nix
   ];
 
   nixpkgs = {
@@ -32,9 +33,9 @@
       fastfetch 
       protonvpn-gui
       qbittorrent 
-      mpv 
       waybar
     ];
+    file.".vim/undodir/.keep".text = "";
     stateVersion = "25.11";
   };
 }

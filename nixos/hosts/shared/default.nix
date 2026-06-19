@@ -59,6 +59,8 @@
     vim
   ];
 
+  security.pam.services.swaylock = {};
+
   services.openssh = {
     enable = true;
     settings = {

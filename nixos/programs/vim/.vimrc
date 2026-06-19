@@ -61,5 +61,3 @@ nnoremap <silent> <leader>fa :Files ~/Documents/<CR>
 nnoremap <silent> <leader>fb :Buffers<CR>
 
 nnoremap <silent> <leader>u :UndotreeToggle<CR>
-
-nnoremap <leader>gf :Rg 
