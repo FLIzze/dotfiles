@@ -1,14 +1,6 @@
 { inputs, pkgs, ... }:
 
 {
-  services.pipewire = {
-    enable            = true;
-    alsa.enable       = true;
-    alsa.support32Bit = true;
-    pulse.enable      = true;
-    jack.enable       = true;
-  };
-
   boot.loader = {
     systemd-boot.enable      = true;
     efi.canTouchEfiVariables = true;
@@ -17,8 +9,10 @@
   networking.networkmanager.enable = true;
   time.timeZone = "Europe/Paris";
 
-  programs.steam.enable = true;
-  programs.zsh.enable   = true;
+  programs = {
+    steam.enable = true;
+    zsh.enable   = true;
+  };
 
   nixpkgs = {
     overlays = [
@@ -62,13 +56,40 @@
 
   security.pam.services.swaylock = {};
 
-  services.openssh = {
-    enable = true;
-    settings = {
-      PermitRootLogin        = "no";
-      PasswordAuthentication = false;
+  services = {
+    greetd = {
+      enable = true;
+      settings = {
+        default_session = {
+          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --remember-session --cmd niri-session";
+          user    = "greeter";
+        };
+        initial_session = {
+          command = "niri-session";
+          user    = "flizze";
+        };
+      };
+    };
+
+    openssh = {
+      enable = true;
+      settings = {
+        PermitRootLogin        = "no";
+        PasswordAuthentication = false;
+      };
+    };
+
+    pipewire = {
+      enable            = true;
+      alsa.enable       = true;
+      alsa.support32Bit = true;
+      pulse.enable      = true;
+      jack.enable       = true;
     };
   };
+
+  virtualisation.virtualbox.host.enable = true;
+  users.extraGroups.vboxusers.members = [ "user-with-access-to-virtualbox" ];
 
   system.stateVersion = "25.11";
 }

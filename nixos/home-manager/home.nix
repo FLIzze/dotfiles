@@ -36,6 +36,9 @@
       bat
       waybar
       xwayland-satellite
+      pandoc
+      onlyoffice-desktopeditors
+      prismlauncher
     ];
     file.".vim/undodir/.keep".text = "";
 
