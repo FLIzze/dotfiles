@@ -11,4 +11,9 @@ input {
     }
 
     warp-mouse-to-focus
+	
+    mouse {
+		accel-speed 0.4
+        accel-profile "flat"
+    }
 }

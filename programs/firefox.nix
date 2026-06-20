@@ -1,7 +1,9 @@
-{ pkgs, config, ... } : {
+{ pkgs, ... } : {
   programs.firefox = {
     enable = true;
-    configPath = "${config.xdg.configHome}/mozilla/firefox";
+    # configPath = "${config.xdg.configHome}/mozilla/firefox";
+    # TODO UPDATE THIS
+    configPath = ".mozilla/firefox";
 
     policies = {
       DisableTelemetry = true;

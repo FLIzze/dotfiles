@@ -24,6 +24,7 @@
 
   programs = {
     obs-studio.enable = true;
+    npm.enable = true;
   };
 
   services.mako = {
@@ -42,7 +43,7 @@
       fzf 
       feh
       fastfetch 
-      protonvpn-gui
+      proton-vpn
       qbittorrent 
       bat
       waybar
@@ -56,6 +57,8 @@
       playerctl
       brightnessctl
       btop
+      qalculate-gtk
+      osu-lazer-bin
     ];
     file.".vim/undodir/.keep".text = "";
 

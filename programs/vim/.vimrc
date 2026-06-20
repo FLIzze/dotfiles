@@ -54,5 +54,5 @@ if executable('rg')
 endif
 
 if executable('fd')
-    let $FZF_DEFAULT_COMMAND = 'fd --type f --exclude node_modules'
+	let $FZF_DEFAULT_COMMAND = 'fd --type f --exclude node_modules'
 endif
