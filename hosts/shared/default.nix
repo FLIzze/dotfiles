@@ -1,10 +1,25 @@
 { inputs, pkgs, ... }:
 
 {
-  boot.loader = {
-    systemd-boot.enable      = true;
-    efi.canTouchEfiVariables = true;
+  boot = {
+    loader = {
+      systemd-boot.enable      = true;
+      efi.canTouchEfiVariables = true;
+    };
+
+    kernelParams = [
+      "zswap.enabled=1"
+      "zswap.compressor=zstd"
+      "zswap.zpool=zsmalloc"
+      ];
   };
+
+  swapDevices = [
+    {
+      device = "/var/lib/swapfile";
+      size = 8192; # 8 GiB
+    }
+  ];
 
   networking.networkmanager.enable = true;
   time.timeZone = "Europe/Paris";
