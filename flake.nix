@@ -8,6 +8,11 @@
 
     home-manager.url = "github:nix-community/home-manager/release-26.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    zen-browser = {
+      url = "github:youwen5/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, home-manager, nur, ... } @ inputs:
@@ -22,25 +27,25 @@
     forAllSystems = nixpkgs.lib.genAttrs systems;
 
     mkHost = { hostname, system ? "x86_64-linux", users ? [ "flizze" ] }:
-      nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = { inherit inputs; };
-        modules = [
-          ./hosts/${hostname}/default.nix
-          { networking.hostName = hostname; }
-        ]
-        ++ map (u: ./users/${u}.nix) users;
-      };
+    nixpkgs.lib.nixosSystem {
+      inherit system;
+      specialArgs = { inherit inputs; };
+      modules = [
+        ./hosts/${hostname}/default.nix
+        { networking.hostName = hostname; }
+      ]
+      ++ map (u: ./users/${u}.nix) users;
+    };
 
     mkHome = { username, hostname, system ? "x86_64-linux" }:
-      home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs {
-          inherit system;
-          overlays = [ nur.overlays.default ];
-        };
-        extraSpecialArgs = { inherit inputs; };
-        modules = [ ./home-manager/home.nix ];
+    home-manager.lib.homeManagerConfiguration {
+      pkgs = import nixpkgs {
+        inherit system;
+        overlays = [ nur.overlays.default ];
       };
+      extraSpecialArgs = { inherit inputs; };
+      modules = [ ./home-manager/home.nix ];
+    };
   in
   {
     packages  = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});

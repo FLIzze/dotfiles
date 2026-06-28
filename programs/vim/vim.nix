@@ -6,6 +6,7 @@
       fzf-vim
       vim-surround
       vim-commentary
+      vim-fugitive
     ];
 
     extraConfig = builtins.readFile ./.vimrc;

@@ -44,6 +44,8 @@ noremap <silent> <leader>o :only<CR>
 noremap <leader>y "+y
 xnoremap <leader>p "_dP
 
+noremap <leader>r :grep 
+noremap <leader>g :Git<CR>
 nnoremap <silent> <leader>fw :Files<CR>
 nnoremap <silent> <leader>fg :GFiles<CR>
 nnoremap <silent> <leader>fa :Files ~/<CR>

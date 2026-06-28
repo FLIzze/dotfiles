@@ -12,7 +12,6 @@
     ../programs/zsh.nix
     ../programs/foot.nix
     ../programs/git.nix
-    ../programs/firefox.nix
     ../programs/mpv.nix
   ];
 
@@ -58,7 +57,8 @@
       brightnessctl
       btop
       qalculate-gtk
-      osu-lazer-bin
+      pavucontrol
+      inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
     file.".vim/undodir/.keep".text = "";
 
