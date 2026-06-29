@@ -74,6 +74,7 @@
     ripgrep 
     fd
     home-manager 
+    jq
     vim
   ];
 
